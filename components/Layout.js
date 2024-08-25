@@ -1,12 +1,17 @@
 import Head from 'next/head'
 import Link from 'next/link'
 
-export default function Layout({ children }) {
+export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkColor }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
-        <title>Mój Cyfrowy Ogród</title>
+        <title>{title}</title>
         <link rel="icon" href="/favicon.ico" />
+        <style>{`
+          .wordpress-content a {
+            color: ${linkColor};
+          }
+        `}</style>
       </Head>
 
       <header className="bg-cream shadow-sm">
@@ -18,16 +23,17 @@ export default function Layout({ children }) {
               </Link>
             </div>
             <div className="flex items-center">
-            <Link 
-                    href={`/o-mnie`} 
-                    className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
-                  >O mnie
-                  </Link>
+              <Link 
+                href={`/o-mnie`} 
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
+              >
+                O mnie
+              </Link>
             </div>
           </div>
         </nav>
       </header>
-            {/* To jest - no właśnie - layout. W ramach tego layoutu będziemy renderować "dzieci" - na przykład posty, strony itd. */}
+
       <main className="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
