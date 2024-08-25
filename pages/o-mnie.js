@@ -13,7 +13,7 @@ export default function AboutMe() {
   return (
     <Layout title={title}>
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-4xl font-bold mb-6">{title}</h1>
+        <h1 className="text-4xl font-bold mb-6 font-heading">{title}</h1>
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/3">
           </div>
