@@ -58,7 +58,7 @@ const AnimatedSubscribeBox = () => {
         }
       `}</style>
       <section className="bg-cream p-6 rounded-lg animated-box">
-        <h2 className="text-2xl font-semibold mb-4 font-heading">Chcesz wiedzieć, kiedy coś się tu pojawi?</h2>
+        <h2 className="text-2xl font-semibold mb-4 font-heading">Chcesz wiedzieć, kiedy pojawi się tu pierwszy tekst?</h2>
         {isSubmitted ? (
           <p className="text-green-600 font-body">Dzięki! Dam Ci znać, kiedy opublikuję pierwszy post :)</p>
         ) : (
