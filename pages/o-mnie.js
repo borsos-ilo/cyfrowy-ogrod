@@ -54,7 +54,6 @@ export async function getStaticProps() {
   return {
     props: {
       pageData: data.pageBy
-    },
-    revalidate: 1200, // Odśwież co najmniej co 60 sekund
+    }
   }
 }
