@@ -1,16 +1,10 @@
-import { useQuery } from "@apollo/client";
 import Layout from '@/components/Layout';
-import { GET_ABOUT_PAGE } from "@/lib/queries";
 import Image from "next/image";
 import RandomColoredLinksContent from '@/components/RandomColoredLinksContent';
+import { GET_ABOUT_PAGE } from '@/lib/queries';
 
-export default function AboutMe() {
-  const { loading, error, data } = useQuery(GET_ABOUT_PAGE);
-
-  if (loading) return <Layout><p>Ładowanie...</p></Layout>;
-  if (error) return <Layout><p>Błąd: {error.message}</p></Layout>;
-
-  const { title, content } = data.pageBy;
+export default function AboutMe({ pageData }) {
+  const { title, content } = pageData;
 
   return (
     <Layout title={title}>
@@ -36,4 +30,31 @@ export default function AboutMe() {
       </div>
     </Layout>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(`${process.env.WORDPRESS_API_URL}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      query: `
+        query GetAboutPage {
+          pageBy(uri: "o-mnie") {
+            id
+            title
+            content
+          }
+        }
+      `
+    })
+  });
+
+  const { data } = await response.json();
+
+  return {
+    props: {
+      pageData: data.pageBy
+    },
+    revalidate: 1200, // Odśwież co najmniej co 60 sekund
+  }
 }
