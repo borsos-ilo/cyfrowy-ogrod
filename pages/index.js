@@ -1,12 +1,25 @@
 import Layout from '@/components/Layout'
+import Link from 'next/link'
+import AnimatedSubscribeBox from '@/components/AnimatedSubscribeBox'
 
 export default function Home() {
   return (
     <Layout title="Strona główna">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold font-heading mb-4">Witaj w moim Cyfrowym Ogrodzie</h1>
-        <p className="text-xl mb-8 font-body">Miejsce, gdzie dzielę się swoimi myślami i odkryciami.</p>
-        {/* Tutaj możesz dodać więcej treści strony głównej */}
+      <div className="text-center max-w-3xl mx-auto">
+        <h1 className="text-4xl font-bold font-heading mb-4">Mój cyfrowy ogród</h1>
+        <p className="text-xl mb-8 font-body">(jakiś podtytuł)</p>
+        
+        <section className="mb-12">
+          <p className="text-lg mb-4 font-body">
+            Póki jeszcze nic tu nie ma, wpadaj na stronę{' '}
+            <Link href="/o-mnie" className="text-blue-600 hover:underline">
+              o mnie
+            </Link>
+            , aby dowiedzieć się więcej!
+          </p>
+        </section>
+
+        <AnimatedSubscribeBox />
       </div>
     </Layout>
   )

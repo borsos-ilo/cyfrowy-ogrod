@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Footer from './Footer'
 
 export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkColor }) {
   return (
@@ -38,11 +39,7 @@ export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkCo
         {children}
       </main>
 
-      <footer className="bg-cream">
-        <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-gray-500 font-body">© 2024 Mój Cyfrowy Ogród. Wszelkie prawa zastrzeżone.</p>
-        </div>
-      </footer>
+      <Footer/>
     </div>
   )
 }
