@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <Layout title="Strona główna"
       description="Mój cyfrowy ogród - osobisty zbiór różnych elementów świata, w którym żyjemy, które wyjaśniam sobie po to, żeby lepiej je zrozumieć, a przez to móc z ich pomocą doświadczać świata w coraz bogatszy sposób."
-      ogImage="https://borsosilona.wpenginepowered.com/wp-content/uploads/2024/08/rsz_1rsz_profil.jpg"
+      ogImage="https://borsosilona.wpenginepowered.com/wp-content/uploads/2024/08/rsz_1profil.jpg"
       >
       <div className="text-center max-w-3xl mx-auto">
         <h1 className="text-4xl font-bold font-heading mb-4">Mój cyfrowy ogród</h1>
