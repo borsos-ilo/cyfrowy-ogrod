@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Footer from './Footer'
 
-export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkColor }) {
+export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkColor, description, ogImage }) {
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
@@ -13,6 +13,13 @@ export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkCo
             color: ${linkColor};
           }
         `}</style>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://twojadomena.com" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Head>
 
       <header className="bg-cream shadow-sm">
