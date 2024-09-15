@@ -19,6 +19,7 @@ export default function FlyCardsSignUp() {
                             confirmationText="Thanks! I'll let you know once the app is live for everyone :)"
                             saving="Saving..."
                             save="Sign up!"
+                            placeholder="Your e-mail"
                         />
                     </div>
                     <div className="md:w-1/2">

@@ -7,7 +7,8 @@ const AnimatedSubscribeBox = ({
   explanation="Nie oznacza to zapisania się do żadnego newslettera, a jedynie jeden mail w momencie, kiedy pojawi się tu pierwszy wpis.",
   confirmationText="Dzięki! Dam Ci znać, kiedy opublikuję pierwszy post :)",
   saving="Zapisywanie...",
-  save="Zapisz się!"
+  save="Zapisz się!",
+  placeholder="Twój email"
 
 }) => {
   const [email, setEmail] = useState('');
@@ -76,7 +77,7 @@ const AnimatedSubscribeBox = ({
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Twój e-mail"
+              placeholder={placeholder}
               required
               className="w-full max-w-md px-4 py-2 mb-4 border border-gray-300 font-body rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
