@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
 
-const AnimatedSubscribeBox = () => {
+const AnimatedSubscribeBox = ({
+  apiRoute,
+  boxTitle="Chcesz wiedzieć, kiedy pojawi się tu pierwszy tekst?",
+  explanation="Nie oznacza to zapisania się do żadnego newslettera, a jedynie jeden mail w momencie, kiedy pojawi się tu pierwszy wpis.",
+  confirmationText="Dzięki! Dam Ci znać, kiedy opublikuję pierwszy post :)",
+  saving="Zapisywanie...",
+  save="Zapisz się!"
+
+}) => {
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -18,7 +26,7 @@ const AnimatedSubscribeBox = () => {
     setError('');
 
     try {
-      const response = await fetch('/api/subscribe', {
+      const response = await fetch(apiRoute, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -58,10 +66,10 @@ const AnimatedSubscribeBox = () => {
         }
       `}</style>
       <section className="bg-cream p-6 rounded-lg animated-box">
-        <h2 className="text-2xl font-semibold mb-4 font-heading">Chcesz wiedzieć, kiedy pojawi się tu pierwszy tekst?</h2>
-        <p className="text-base font-body p-3">Nie oznacza to zapisania się do żadnego newslettera, a jedynie jeden mail w momencie, kiedy pojawi się tu pierwszy wpis. </p>
+        <h2 className="text-2xl font-semibold mb-4 font-heading">{boxTitle}</h2>
+        <p className="text-base font-body p-3">{explanation}</p>
         {isSubmitted ? (
-          <p className="text-green-600 font-body">Dzięki! Dam Ci znać, kiedy opublikuję pierwszy post :)</p>
+          <p className="text-green-600 font-body">{confirmationText}</p>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col items-center">
             <input
@@ -82,7 +90,7 @@ const AnimatedSubscribeBox = () => {
               disabled={isLoading}
               className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-body disabled:opacity-50"
             >
-              {isLoading ? 'Zapisywanie...' : 'Zapisz się!'}
+              {isLoading ? {saving} : {save}}
             </button>
           </form>
         )}

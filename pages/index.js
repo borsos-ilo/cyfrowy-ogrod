@@ -21,7 +21,7 @@ export default function Home() {
           </p>
         </section>
 
-        <AnimatedSubscribeBox />
+        <AnimatedSubscribeBox apiRoute={'/api/subscribe'} />
       </div>
     </Layout>
   )
