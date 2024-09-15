@@ -90,7 +90,7 @@ const AnimatedSubscribeBox = ({
               disabled={isLoading}
               className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors font-body disabled:opacity-50"
             >
-              {isLoading ? {saving} : {save}}
+              {isLoading ? saving : save}
             </button>
           </form>
         )}
