@@ -36,6 +36,12 @@ export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkCo
               >
                 O mnie
               </Link>
+              <Link 
+                href={`/kolofon`} 
+                className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
+              >
+                Kolofon
+              </Link>
             </div>
           </div>
         </nav>
