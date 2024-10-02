@@ -8,3 +8,7 @@
 body {
   @apply bg-cream text-gray-800;
 }
+
+html {
+  scroll-behavior: smooth;
+}
