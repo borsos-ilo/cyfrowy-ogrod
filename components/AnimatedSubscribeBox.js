@@ -66,7 +66,7 @@ const AnimatedSubscribeBox = ({
           animation: rainbow-shadow 14s linear infinite;
         }
       `}</style>
-      <section className="bg-cream p-6 rounded-lg animated-box">
+      <section className="bg-cream p-6 rounded-lg animated-box text-center">
         <h2 className="text-2xl font-semibold mb-4 font-heading">{boxTitle}</h2>
         <p className="text-base font-body p-3">{explanation}</p>
         {isSubmitted ? (
