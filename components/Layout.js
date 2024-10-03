@@ -2,7 +2,16 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Footer from './Footer'
 
-export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkColor, description, ogImage }) {
+export default function Layout({ 
+  children, 
+  title = 'Mój Cyfrowy Ogród', 
+  linkColor, 
+  description = 'Mój osobisty cyfrowy ogród, gdzie dzielę się przemyśleniami i wiedzą.',
+  ogImage = 'https://ilonaborsos.com/default-og-image.jpg', // Dodaj domyślny obrazek OG
+  metaTags = [] 
+}) {
+  const baseUrl = 'https://ilonaborsos.com'; // Dodaj bazowy URL twojej strony
+
   return (
     <div className="min-h-screen flex flex-col">
       <Head>
@@ -17,8 +26,15 @@ export default function Layout({ children, title = 'Mój Cyfrowy Ogród', linkCo
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://ilonaborsos.com" />
+        <meta property="og:url" content={baseUrl} />
+        <meta property="og:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+        {metaTags.map((tag, index) => (
+          <meta key={index} {...tag} />
+        ))}
       </Head>
 
       <header className="bg-cream shadow-sm">
