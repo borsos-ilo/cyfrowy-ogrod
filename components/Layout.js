@@ -10,7 +10,7 @@ export default function Layout({
   ogImage = 'https://ilonaborsos.com/default-og-image.jpg', // Dodaj domyślny obrazek OG
   metaTags = [] 
 }) {
-  const baseUrl = 'https://ilonaborsos.com'; // Dodaj bazowy URL twojej strony
+  // const baseUrl = 'https://ilonaborsos.com'; // Dodaj bazowy URL twojej strony
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -26,7 +26,7 @@ export default function Layout({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={baseUrl} />
+        {/* <meta property="og:url" content={baseUrl} /> */}
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
