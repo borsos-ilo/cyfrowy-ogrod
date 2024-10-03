@@ -33,8 +33,11 @@ export default function Post() {
   const postUrl = `https://ilonaborsos.com/posts/${slug}`;
 
   const metaTags = [
+    { property: "og:title", content: data.post.title },
+    { property: "og:description", content: excerpt },
     { property: "og:type", content: "article" },
     { property: "og:url", content: postUrl },
+    { property: "og:image", content: ogImage },
     { property: "article:published_time", content: data.post.date },
     { property: "article:modified_time", content: data.post.modified },
   ];
@@ -45,6 +48,7 @@ export default function Post() {
       description={excerpt}
       ogImage={ogImage}
       metaTags={metaTags}
+      currentUrl={postUrl}
     >
       <article className="wordpress-content">
         <h1>{data.post.title}</h1>

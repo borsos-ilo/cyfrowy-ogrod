@@ -7,10 +7,11 @@ export default function Layout({
   title = 'Mój Cyfrowy Ogród', 
   linkColor, 
   description = 'Mój osobisty cyfrowy ogród, gdzie dzielę się przemyśleniami i wiedzą.',
-  ogImage = 'https://ilonaborsos.com/default-og-image.jpg', // Dodaj domyślny obrazek OG
-  metaTags = [] 
+  ogImage = 'https://ilonaborsos.com/default-og-image.jpg',
+  metaTags = [],
+  currentUrl
 }) {
-  // const baseUrl = 'https://ilonaborsos.com'; // Dodaj bazowy URL twojej strony
+  const baseUrl = 'https://ilonaborsos.com';
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -26,7 +27,7 @@ export default function Layout({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        {/* <meta property="og:url" content={baseUrl} /> */}
+        <meta property="og:url" content={currentUrl || baseUrl} />
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
