@@ -1,7 +1,6 @@
 import { useRouter } from 'next/router'
 import { useQuery } from "@apollo/client";
 import Image from 'next/image';
-import Head from 'next/head';
 import Layout from '@/components/Layout'
 import { GET_POST } from "@/lib/queries";
 import RandomColoredLinksContent from '@/components/RandomColoredLinksContent';
@@ -33,19 +32,20 @@ export default function Post() {
   const ogImage = data.post.featuredImage ? data.post.featuredImage.node.sourceUrl : '';
   const postUrl = `https://ilonaborsos.com/posts/${slug}`;
 
+  const metaTags = [
+    { property: "og:type", content: "article" },
+    { property: "og:url", content: postUrl },
+    { property: "article:published_time", content: data.post.date },
+    { property: "article:modified_time", content: data.post.modified },
+  ];
+
   return (
-    <Layout title={data.post.title}>
-      <Head>
-        <meta property="og:title" content={data.post.title} />
-        <meta property="og:description" content={excerpt} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={postUrl} />
-        {ogImage && <meta property="og:image" content={ogImage} />}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={data.post.title} />
-        <meta name="twitter:description" content={excerpt} />
-        {ogImage && <meta name="twitter:image" content={ogImage} />}
-      </Head>
+    <Layout 
+      title={data.post.title}
+      description={excerpt}
+      ogImage={ogImage}
+      metaTags={metaTags}
+    >
       <article className="wordpress-content">
         <h1>{data.post.title}</h1>
         {data.post.featuredImage && (
