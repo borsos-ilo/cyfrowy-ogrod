@@ -21,8 +21,8 @@ const StatusCard = ({ statusRozwoju, datePublished, dateModified }) => {
   };
 
   return (
-    <div className="flex items-center p-3 my-3 bg-[#c4f2d0] bg-opacity-50 rounded-lg shadow-sm h-24">
-      <div className="flex-shrink-0 w-16 h-16 mr-4 flex items-center justify-center">
+    <div className="grid grid-cols-2 p-3 my-3 bg-[#c4f2d0] bg-opacity-50">
+      <div className="w-16 h-16 shrink-0 items-center justify-center">
         <Image
           src={getIcon(statusRozwoju)}
           alt={statusRozwoju}
@@ -31,7 +31,7 @@ const StatusCard = ({ statusRozwoju, datePublished, dateModified }) => {
           layout="fixed"
         />
       </div>
-      <div className="flex flex-col justify-center flex-grow">
+      <div className="justify-center">
         <span className="font-semibold text-green-700 text-lg mb-1 my-3">Status: {statusRozwoju}</span>
         <div className="text-sm text-green-600">
           <p>Data publikacji: {formatDate(datePublished)}</p>
