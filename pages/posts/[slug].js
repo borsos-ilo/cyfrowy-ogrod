@@ -1,10 +1,10 @@
 import { useRouter } from 'next/router'
-import { useQuery } from "@apollo/client";
 import Image from 'next/image';
+import { gql } from '@apollo/client';
 import Layout from '@/components/Layout'
-import { GET_POST } from "@/lib/queries";
 import RandomColoredLinksContent from '@/components/RandomColoredLinksContent';
 import StatusCard from '@/components/StatusCard';
+import { GET_POST } from '@/lib/queries';
 
 function stripHtml(html) {
   if (typeof window === 'undefined') {
@@ -15,48 +15,44 @@ function stripHtml(html) {
   return tmp.textContent || tmp.innerText || "";
 }
 
-export default function Post() {
+export default function Post({ post }) {
   const router = useRouter()
-  const { slug } = router.query
-  
-  const { loading, error, data } = useQuery(GET_POST, {
-    variables: { slug },
-    skip: !slug,
-  });
 
-  if (loading) return <Layout><p>Ładowanie...</p></Layout>;
-  if (error) return <Layout><p>Błąd: {error.message}</p></Layout>;
-  if (!data?.post) return <Layout><p>Nie znaleziono posta</p></Layout>;
+  if (router.isFallback) {
+    return <Layout><p>Ładowanie...</p></Layout>;
+  }
 
-  const excerpt = data.post.excerpt ? stripHtml(data.post.excerpt).substring(0, 160) : '';
-  const ogImage = data.post.featuredImage ? data.post.featuredImage.node.sourceUrl : '';
-  const postUrl = `https://ilonaborsos.com/posts/${slug}`;
+  if (!post) return <Layout><p>Nie znaleziono posta</p></Layout>;
+
+  const excerpt = post.excerpt ? stripHtml(post.excerpt).substring(0, 160) : '';
+  const ogImage = post.featuredImage?.node?.sourceUrl || '';
+  const postUrl = `https://ilonaborsos.com/posts/${post.slug}`;
 
   const metaTags = [
-    { property: "og:title", content: data.post.title },
+    { property: "og:title", content: post.title },
     { property: "og:description", content: excerpt },
     { property: "og:type", content: "article" },
     { property: "og:url", content: postUrl },
     { property: "og:image", content: ogImage },
-    { property: "article:published_time", content: data.post.date },
-    { property: "article:modified_time", content: data.post.modified },
+    { property: "article:published_time", content: post.date },
+    { property: "article:modified_time", content: post.modified },
   ];
 
   return (
     <Layout 
-      title={data.post.title}
+      title={post.title}
       description={excerpt}
       ogImage={ogImage}
       metaTags={metaTags}
       currentUrl={postUrl}
     >
       <article className="wordpress-content">
-        <h1>{data.post.title}</h1>
-        {data.post.featuredImage && (
+        <h1>{post.title}</h1>
+        {post.featuredImage && (
           <div className="mb-6">
             <Image
-              src={data.post.featuredImage.node.sourceUrl}
-              alt={data.post.featuredImage.node.altText || data.post.title}
+              src={post.featuredImage.node.sourceUrl}
+              alt={post.featuredImage.node.altText || post.title}
               width={800}
               height={400}
               layout="responsive"
@@ -65,12 +61,82 @@ export default function Post() {
           </div>
         )}
         <StatusCard
-          statusRozwoju={data.post.polaPostowCyfrowyOgrod.statusRozwoju}
-          datePublished={data.post.date} 
-          dateModified={data.post.modified}
+          statusRozwoju={post.polaPostowCyfrowyOgrod.statusRozwoju}
+          datePublished={post.date} 
+          dateModified={post.modified}
         />
-        <RandomColoredLinksContent content={data.post.content}/>
+        <RandomColoredLinksContent content={post.content}/>
       </article>
     </Layout>
   )
+}
+
+export async function getStaticPaths() {
+
+  try {
+    const response = await fetch(`${process.env.WORDPRESS_API_URL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `
+          query GetSlugs {
+            posts {
+              edges {
+                node {
+                  slug
+                }
+              }
+            }
+          }
+        `
+      })
+    });
+
+    const { data } = await response.json()
+
+    const paths = data.posts.edges.map(({node}) => ({
+      params: { slug: node.slug },
+    }));
+
+
+    return {
+      paths,
+      fallback: 'blocking',
+    };
+  } catch (error) {
+    console.error('Error fetching posts:', error);
+    return { paths: [], fallback: 'blocking' };
+  }
+}
+
+export async function getStaticProps({ params }) {
+
+  try {
+    const  response  = await fetch(`${process.env.WORDPRESS_API_URL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: GET_POST,
+        variables: { slug: params.slug }
+      })
+    });
+
+    const { data } = await response.json()
+    if (!data.post) {
+      return {
+        notFound: true,
+      }
+    }
+
+    return {
+      props: {
+        post: data.post,
+      },
+    }
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    return {
+      notFound: true,
+    }
+  }
 }
