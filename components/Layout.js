@@ -60,10 +60,10 @@ export default function Layout({
                 Kolofon
               </Link>
               <Link 
-                href={`/newsletter`} 
+                href={`/teraz`} 
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
               >
-                Newsletter
+                Teraz
               </Link>
             </div>
           </div>
