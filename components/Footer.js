@@ -1,4 +1,4 @@
-import { FaLinkedin, FaInstagram, FaFlickr, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaInstagram, FaFlickr, FaTwitter, FaMastodon } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -20,6 +20,9 @@ const Footer = () => {
             </a>
             <a href="https://x.com/borsos_ilo" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
               <FaTwitter size={24} />
+            </a>
+            <a href="https://mastodon.social/@borsos_ilo" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-gray-700">
+              <FaMastodon size={24} />
             </a>
           </div>
         </div>
