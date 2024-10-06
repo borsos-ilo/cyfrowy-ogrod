@@ -30,6 +30,8 @@ export default function Layout({
         <meta property="og:type" content="website" />
         <meta property="og:url" content={fullUrl} />
         <meta property="og:image" content={ogImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
         <meta name="twitter:description" content={description} />
