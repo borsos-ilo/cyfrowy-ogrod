@@ -30,7 +30,7 @@ export default function Post({ post }) {
 
   return (
     <Layout 
-      title={title}
+      title={post.title}
       description={excerpt}
       ogImage={post.featuredImage.node.sourceUrl}
       currentUrl={currentUrl}
