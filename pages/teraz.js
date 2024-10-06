@@ -8,7 +8,7 @@ function stripHtml(html) {
 
 export default function Now({ pageData }) {
   const { title, content, update, featuredImage } = pageData[0].node;
-  const ogTitle = title + "- co u mnie słychać?";
+  const ogTitle = title + " - co u mnie słychać?";
   const currentUrl = "/teraz";
   const cleanDescription = stripHtml(content).substring(0, 200) + '...';
 
