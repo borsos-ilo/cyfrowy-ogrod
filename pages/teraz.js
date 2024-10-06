@@ -4,8 +4,16 @@ import Image from "next/image";
 
 export default function Now({ pageData }) {
   const { title, content, update, featuredImage } = pageData[0].node;
+  const description = "Co u mnie słychać?";
+  const currentUrl = "/teraz";
+
   return (
-    <Layout title={title}>
+    <Layout 
+      title={title}
+      description={description}
+      ogImage={featuredImage.node.sourceUrl}
+      currentUrl={currentUrl}
+    >
       <div className="max-w-4xl">
         <h1 className="text-4xl font-bold mb-6 text-center font-heading">{title}</h1>
         <div className="flex flex-wrap -mx-3">

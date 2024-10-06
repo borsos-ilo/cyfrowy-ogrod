@@ -7,11 +7,12 @@ export default function Layout({
   title = 'Mój Cyfrowy Ogród', 
   linkColor, 
   description = 'Mój osobisty cyfrowy ogród, gdzie dzielę się przemyśleniami i wiedzą.',
-  ogImage = 'https://ilonaborsos.com/default-og-image.jpg',
+  ogImage = 'https://borsosilona.wpenginepowered.com/wp-content/uploads/2024/08/rsz_1profil.jpg',
   metaTags = [],
   currentUrl
 }) {
   const baseUrl = 'https://ilonaborsos.com';
+  const fullUrl = currentUrl ? `${baseUrl}${currentUrl}` : baseUrl;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -27,7 +28,7 @@ export default function Layout({
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={currentUrl || baseUrl} />
+        <meta property="og:url" content={fullUrl} />
         <meta property="og:image" content={ogImage} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={title} />
