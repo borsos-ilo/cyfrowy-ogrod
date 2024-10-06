@@ -4,13 +4,13 @@ import Image from "next/image";
 
 export default function Now({ pageData }) {
   const { title, content, update, featuredImage } = pageData[0].node;
-  const description = "Co u mnie słychać?";
+  const ogTitle = title + "- co u mnie słychać?";
   const currentUrl = "/teraz";
 
   return (
     <Layout 
-      title={title}
-      description={description}
+      title={ogTitle}
+      description={content}
       ogImage={featuredImage.node.sourceUrl}
       currentUrl={currentUrl}
     >
