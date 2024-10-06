@@ -17,20 +17,20 @@ export default function Now({ pageData }) {
       <div className="max-w-4xl">
         <h1 className="text-4xl font-bold mb-6 text-center font-heading">{title}</h1>
         <div className="flex flex-wrap -mx-3">
-          <div className="basis-3/5 md:w-1/2 px-3 mb-6 ">
-              <RandomColoredLinksContent content={content} />
-          </div>
-          <div className="basis-2/5 md:w-1/2 px-3 mb-6 flex items-center justify-center">
-              <div className="w-full">
-                <Image
-                  src={featuredImage.node.sourceUrl}
-                  alt={featuredImage.node.altText || title}
-                  width={400}
-                  height={400}
-                  layout="responsive"
-                  className="rounded-lg"
-                />
+          <div className="md:w-2/5 px-3 mb-6 flex items-center justify-center">
+              <div className="w-full flex items-center justify-center">
+              <Image
+                src={featuredImage.node.sourceUrl}
+                alt={featuredImage.node.altText || title}
+                width={400}
+                height={400}
+                layout="intrinsic"
+                className="rounded-lg"
+              />
             </div>
+          </div>
+          <div className="md:w-3/5 px-3 mb-6">
+              <RandomColoredLinksContent content={content} />
           </div>
           <div className="w-full md:w-1/2 px-3 mb-6">
               <h2 className="text-2xl font-semibold mb-4 font-heading">Muzyka</h2>
