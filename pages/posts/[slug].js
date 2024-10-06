@@ -26,25 +26,14 @@ export default function Post({ post }) {
 
   const excerpt = post.excerpt ? stripHtml(post.excerpt).substring(0, 160) : '';
   const ogImage = post.featuredImage?.node?.sourceUrl || '';
-  const postUrl = `https://ilonaborsos.com/posts/${post.slug}`;
-
-  const metaTags = [
-    { property: "og:title", content: post.title },
-    { property: "og:description", content: excerpt },
-    { property: "og:type", content: "article" },
-    { property: "og:url", content: postUrl },
-    { property: "og:image", content: ogImage },
-    { property: "article:published_time", content: post.date },
-    { property: "article:modified_time", content: post.modified },
-  ];
+  const currentUrl = `${post.slug}`;
 
   return (
     <Layout 
-      title={post.title}
+      title={title}
       description={excerpt}
-      ogImage={ogImage}
-      metaTags={metaTags}
-      currentUrl={postUrl}
+      ogImage={post.featuredImage.node.sourceUrl}
+      currentUrl={currentUrl}
     >
       <article className="wordpress-content">
         <h1>{post.title}</h1>

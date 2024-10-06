@@ -2,15 +2,20 @@ import Layout from "@/components/Layout";
 import RandomColoredLinksContent from "@/components/RandomColoredLinksContent";
 import Image from "next/image";
 
+function stripHtml(html) {
+  return html.replace(/<[^>]*>/g, '');
+}
+
 export default function Now({ pageData }) {
   const { title, content, update, featuredImage } = pageData[0].node;
   const ogTitle = title + "- co u mnie słychać?";
   const currentUrl = "/teraz";
+  const cleanDescription = stripHtml(content).substring(0, 200) + '...';
 
   return (
     <Layout 
       title={ogTitle}
-      description={content}
+      description={cleanDescription}
       ogImage={featuredImage.node.sourceUrl}
       currentUrl={currentUrl}
     >
