@@ -57,12 +57,6 @@ export default function Layout({
                 O mnie
               </Link>
               <Link 
-                href={`/kolofon`} 
-                className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
-              >
-                Kolofon
-              </Link>
-              <Link 
                 href={`/teraz`} 
                 className="text-gray-700 hover:text-gray-900 px-3 py-2 font-heading"
               >
