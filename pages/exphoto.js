@@ -47,7 +47,7 @@ export default function ExPhoto() {
           {grid.map((item, index) => (
             <div
               key={index}
-              className="w-24 h-24 bg-cover bg-center"
+              className="w-12 h-12 md:w-24 md:h-24 bg-cover bg-center"
               style={{ backgroundImage: `url('${item.path}/${item.number}.jpg')` }}
             />
           ))}
