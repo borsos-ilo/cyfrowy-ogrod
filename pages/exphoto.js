@@ -41,6 +41,7 @@ export default function ExPhoto() {
     <Layout
       title="Experimental photography course"
       description="Experimental photography project"
+      ogImage='https://borsosilona.wpenginepowered.com/wp-content/uploads/2024/10/Zrzut-ekranu-2024-10-9-o-20.35.59.png'
     >
         <div className='flex flex-col items-center'>
         <div className="grid grid-cols-5 gap-1 p-1 mb-5">
