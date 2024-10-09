@@ -56,16 +56,22 @@ export default function ExPhoto() {
           onClick={generateGrid}
           className="px-5 py-2 text-base bg-gradient-to-r from-teal-400 to-blue-500 cursor-pointer bg-blue-500 w-20 text-white font-body rounded-lg rounded"
         >
-          Losuj
+          Generate
         </button>
         </div>
         <div className="grid grid-cols-2">
             <div className="mt-5 text-lg text-center font-body">
-                Isti: {25-counter.count} ({100-counter.percentage}%)
-            </div>
-            <div className="mt-5 text-lg text-center font-body">
                 Ilona: {counter.count} ({counter.percentage}%)
             </div>
+            <div className="mt-5 text-lg text-center font-body">
+                Isti: {25-counter.count} ({100-counter.percentage}%)    
+            </div>
+        </div>
+        <div className="w-full h-6 bg-[#4B878B] rounded-full overflow-hidden">
+        <div 
+            className="h-full bg-[#921416] rounded-full"
+            style={{ width: `${counter.percentage}%` }}
+        ></div>
         </div>
     </Layout>
   );
