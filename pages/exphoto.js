@@ -54,7 +54,7 @@ export default function ExPhoto() {
         </div>
         <button
           onClick={generateGrid}
-          className="px-5 py-2 text-base bg-gradient-to-r from-teal-400 to-blue-500 cursor-pointer bg-blue-500 w-20 text-white font-body rounded-lg rounded"
+          className="px-5 py-2 text-base bg-gradient-to-r from-teal-400 to-blue-500 cursor-pointer bg-blue-500 w-25 text-white font-body rounded-lg rounded"
         >
           Generate
         </button>
