@@ -67,7 +67,7 @@ export default function Layout({
         </nav>
       </header>
 
-      <main className=" mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
 

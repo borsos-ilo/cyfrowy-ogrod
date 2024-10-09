@@ -35,9 +35,12 @@ export default function Post({ post }) {
       ogImage={post.featuredImage.node.sourceUrl}
       currentUrl={currentUrl}
     >
-      <article className="wordpress-content">
-        <h1>{post.title}</h1>
-        {post.featuredImage && (
+      <h1 className='text-4xl font-bold mb-4 mt-6 font-heading'>
+        {post.title}
+      </h1>
+      
+      <div>
+      {post.featuredImage && (
           <div className="mb-6">
             <Image
               src={post.featuredImage.node.sourceUrl}
@@ -49,11 +52,13 @@ export default function Post({ post }) {
             />
           </div>
         )}
-        <StatusCard
-          statusRozwoju={post.polaPostowCyfrowyOgrod.statusRozwoju}
-          datePublished={post.date} 
-          dateModified={post.modified}
-        />
+      </div>
+      <StatusCard
+        statusRozwoju={post.polaPostowCyfrowyOgrod.statusRozwoju}
+        datePublished={post.date} 
+        dateModified={post.modified}
+      />
+      <article className="wordpress-content">
         <RandomColoredLinksContent content={post.content}/>
       </article>
     </Layout>

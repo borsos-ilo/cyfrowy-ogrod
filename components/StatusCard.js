@@ -1,17 +1,17 @@
 import React from 'react';
-import Image from 'next/image';
+import { Bean, Sprout, Cherry } from 'lucide-react';
 
 const StatusCard = ({ statusRozwoju, datePublished, dateModified }) => {
   const getIcon = (statusRozwoju) => {
     switch (statusRozwoju) {
       case 'Nasiono':
-        return '/icons/seed.png';
+        return <Bean color="#1f1200" />;
       case 'Sadzonka':
-        return '/icons/bud.png';
+        return <Sprout color="#114b12" />;
       case 'Owoc':
-        return '/icons/strawberry.png';
+        return <Cherry color="#ad1010" />;
       default:
-        return '/icons/seed.png';
+        return <Bean color="#1f1200" />;
     }
   };
 
@@ -21,22 +21,14 @@ const StatusCard = ({ statusRozwoju, datePublished, dateModified }) => {
   };
 
   return (
-    <div className="grid grid-cols-2 p-3 my-3 bg-[#c4f2d0] bg-opacity-50">
-      <div className="w-16 h-16 shrink-0 items-center justify-center">
-        <Image
-          src={getIcon(statusRozwoju)}
-          alt={statusRozwoju}
-          width={56}
-          height={56}
-          layout="fixed"
-        />
+    <div className="font-body bg-white shadow-sm rounded-lg p-4 max-w-sm mx-auto">
+      <div className="flex items-center mb-3">
+        <span className="mr-2">{getIcon(statusRozwoju)}</span>
+        <span className="font-semibold text-lg">Status: {statusRozwoju}</span>
       </div>
-      <div className="justify-center">
-        <span className="font-semibold text-green-700 text-lg mb-1 my-3">Status: {statusRozwoju}</span>
-        <div className="text-sm text-green-600">
-          <p>Data publikacji: {formatDate(datePublished)}</p>
-          <p>Ostatnia edycja: {formatDate(dateModified)}</p>
-        </div>
+      <div className="text-sm">
+        <p>Data publikacji: {formatDate(datePublished)}</p>
+        <p>Ostatnia edycja: {formatDate(dateModified)}</p>
       </div>
     </div>
   );
