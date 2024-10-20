@@ -5,6 +5,7 @@ import Layout from '@/components/Layout'
 import RandomColoredLinksContent from '@/components/RandomColoredLinksContent';
 import StatusCard from '@/components/StatusCard';
 import { GET_POST } from '@/lib/queries';
+import { Heart } from 'lucide-react';
 
 function stripHtml(html) {
   if (typeof window === 'undefined') {
@@ -14,6 +15,9 @@ function stripHtml(html) {
   tmp.innerHTML = html;
   return tmp.textContent || tmp.innerText || "";
 }
+
+
+
 
 export default function Post({ post }) {
   const router = useRouter()
@@ -61,6 +65,10 @@ export default function Post({ post }) {
       <article className="wordpress-content">
         <RandomColoredLinksContent content={post.content}/>
       </article>
+      <div className='flex justify-end items-center mt-4'>
+        <span className="mr-2 text-sm font-body">Podoba Ci się ten post?</span>
+        <Heart color="#ad1010" />
+      </div>
     </Layout>
   )
 }
