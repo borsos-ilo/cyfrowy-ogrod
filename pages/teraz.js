@@ -1,3 +1,4 @@
+import HeartReaction from "@/components/HeartReaction";
 import Layout from "@/components/Layout";
 import RandomColoredLinksContent from "@/components/RandomColoredLinksContent";
 import Image from "next/image";
@@ -52,6 +53,9 @@ export default function Now({ pageData }) {
           <div className="w-full md:w-1/2 px-3 mb-6">
               <h2 className="text-2xl font-semibold mb-4 font-heading">Projekty</h2>
               <RandomColoredLinksContent content={update.projects} />
+          </div>
+          <div className="w-full px-3 mb-6 flex justify-end">
+          <HeartReaction/>
           </div>
         </div>
       </div>

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.11.4",
+    "@supabase/supabase-js": "^2.47.10",
     "@wpengine/atlas-next": "^1.4.1",
     "@wpengine/edge-cache": "^1.2.0",
     "framer-motion": "^11.11.7",
